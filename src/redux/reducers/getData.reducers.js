@@ -1,7 +1,7 @@
 import {GET_DATA_REQUEST, GET_DATA_SUCCESS, GET_DATA_FAILED,} from '../actions/getData';
 import {POST_SEARCH_REQUEST, POST_SEARCH_SUCCESS, POST_SEARCH_FAILED} from '../actions/searchData';
 
-import {ID_MOVIE_REQUEST, ID_MOVIE_SUCCESS, ID_MOVIE_FAILED} from '../actions/idMovie';
+import {POST_ID_MOVIE_REQUEST, POST_ID_MOVIE_SUCCESS, POST_ID_MOVIE_FAILED} from '../actions/idMovie';
 
 const initialState = {
   data: [],
@@ -31,18 +31,19 @@ const getData = (state=initialState, action) => {
       }
       
       //GET ID CASE
-      case ID_MOVIE_REQUEST:
+      case POST_ID_MOVIE_REQUEST:
         console.log("sudah ambil data id movie");
         return{
           ...state,
         }
-      case ID_MOVIE_SUCCESS:
-  
+      case POST_ID_MOVIE_SUCCESS:
+        console.log("ID_MOVIE_SUCCESS REDUCER", action);
+
         return{
           ...state,
           data: action.result
         }
-      case ID_MOVIE_FAILED:
+      case POST_ID_MOVIE_FAILED:
         console.log(action.error);
         return{
           ...state,

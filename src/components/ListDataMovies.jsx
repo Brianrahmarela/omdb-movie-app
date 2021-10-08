@@ -4,12 +4,20 @@ import {useDispatch, useSelector} from 'react-redux';
 // import { connect } from "react-redux";
 // import { getData } from "../redux/actions/getData";
 import { postSearch } from "../redux/actions/searchData";
-// import { postIDMovie } from "../redux/actions/idMovie";
+import { postIDMovie } from "../redux/actions/idMovie";
+import { useHistory } from "react-router-dom";
+
 import { Button, Card, Form, Row, Col } from "react-bootstrap";
 
 function ListDataMovies() {
+	const history = useHistory();
+
   const ListMovie = useSelector((state) => state.getData.data);
 	console.log('hasil pencarian reducers', ListMovie);
+
+  const ListIDMovie = useSelector((state) => state.getData.data);
+	console.log('hasil pencarian reducers', ListIDMovie);
+
   const dispatch = useDispatch();
 
 	// console.log("Props dari mstp ke komponen", props); 
@@ -27,12 +35,18 @@ function ListDataMovies() {
 		dispatch(postSearch(e.target.searchbtn.value))
 		e.target.searchbtn.value = "";
 	};
-	// const GetIDMovie = (e) => {
-	// 	e.preventDefault();
-  //   console.log('id movie yg di klik: ', e.target.id);
-	// 	dispatch(postIDMovie(e.target.id))
-	// 	// e.target.id = "";
-	// };
+	const GetIDMovie = (e, item) => {
+		// console.log('events GetIDMovie', e),
+		console.log('item GetIDMovie', item)
+		// return{
+		// 	e
+		// }
+		e.preventDefault();
+    console.log('id movie yg di klik: ', item);
+		dispatch(postIDMovie(item))
+		history.push('/detail-movie');
+		item = "";
+	};
 
 	return (
 		<div>
@@ -62,8 +76,8 @@ function ListDataMovies() {
 				ListMovie !== undefined ? (
 					ListMovie.map((item, idx) => (
 						<>
-							<Col >						
-								<Card style={{ width: "18rem", marginBottom: 25 }} key={idx}>
+							<Col key={idx}>						
+								<Card style={{ width: "18rem", marginBottom: 25 }} >
 									<Card.Img variant="top" src={item.Poster} />
 									<Card.Body>
 										<Card.Title>{item.Title}</Card.Title>
@@ -71,8 +85,8 @@ function ListDataMovies() {
 											Some quick example text to build on the card title and make
 											up the bulk of the card's content.
 										</Card.Text>
-										{/* <Button variant="primary" href="#" id={item.imdbID} onClick={GetIDMovie}>Detail Movie</Button> */}
-										<Button variant="primary" href="#" id={item.imdbID} >Detail Movie</Button>
+										<Button variant="primary" onClick={(e) => GetIDMovie(e, item.imdbID)}>Detail Movie</Button>
+										{/* <Button variant="primary" href="#" id={item.imdbID} >Detail Movie</Button> */}
 									</Card.Body>
 								</Card>
 							</Col>

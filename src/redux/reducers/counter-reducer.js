@@ -7,7 +7,6 @@ const initialState = {
 const counter = (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT:
-      // console.log(...prevState);
       return{
         ...state,
         valNumber: state.valNumber + 1
@@ -21,7 +20,6 @@ const counter = (state = initialState, action) => {
         };
       } else {
         return state
-      
       }
     default:
       return state;

@@ -27,7 +27,6 @@ export const postSearch = (newSearch) => {
   return function (dispatch){
     dispatch(postSearchRequest())
     axios
-      // .post('http://www.omdbapi.com/?apikey=7b0482ff&s=',{search : newSearch})
       .post(`http://www.omdbapi.com/?apikey=7b0482ff&s=${newSearch}`)
       .then(result => dispatch(postSearchSuccess(result.data)))
       .catch(error => dispatch(postSearchError(error)))

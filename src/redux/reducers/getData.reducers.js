@@ -54,17 +54,16 @@ const getData = (state=initialState, action) => {
     //POST CASE
     case POST_SEARCH_REQUEST:
       console.log('request reducer:', action)
-      return {
-          ...state,
-          data: [action.result]
-      };
+      return state;
   
     case POST_SEARCH_SUCCESS:
       console.log('POST_SEARCH_SUCCESS reducer:', action)
 
         return {
             ...state,
-            data: [action.result.Search]
+            data: [
+              action.result.Search
+            ]
 
         };
 
@@ -72,8 +71,7 @@ const getData = (state=initialState, action) => {
         console.log(action.error);
         return {
             ...state,
-            error: [action.error],
-            isLoading: false,
+            error: action.error,
         };
     default: 
       return state;

@@ -2,6 +2,7 @@ import React from 'react';
 // import CounterBtn from '../components/CounterBtn';
 import ListDataMovies from '../components/ListDataMovies';
 import { Container } from "react-bootstrap";
+import FizzBuzz from '../components/FizzBuzz';
 
 
 function Home() {
@@ -11,7 +12,8 @@ function Home() {
     <div style={{marginTop: 80}}>
       <h1>Hal Home</h1>
       {/* <CounterBtn/> */}
-      <ListDataMovies/>
+      {/* <FizzBuzz/>
+      <ListDataMovies/> */}
     </div>
     </Container>
   )

@@ -7,9 +7,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //pages
 import Home2 from "./pages/Home2";
 import DetailMovie from "./pages/DetailMovie";
-import UserPage from "./pages/UserPage";
+// import UserPage from "./pages/UserPage";
 //3.import provider yg tlah dibuat contextnya
-import UserContextProvider from "./contexts/UserContext";
+// import UserContextProvider from "./contexts/UserContext";
 
 //4.wrap dari provider ke komponen apa saja yg mau dilirkan datanya dari provider
 function App() {
